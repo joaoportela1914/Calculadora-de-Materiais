@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Calculadora de Materiais - Obra</title>
+</h:head>
+<h:body style="margin: 20px; font-family: Arial, sans-serif;">
+
+    <h:form id="formOrcamento">
+        <p:growl id="mensagens" showDetail="true" />
+
+        <p:panel header="Solicitação de Orçamento: Cálculo de Tijolos">
+            <div class="ui-fluid grid formgrid">
+
+                <div class="field col-12 md:col-6" style="margin-bottom: 15px;">
+                    <p:outputLabel for="nomeUsuario" value="Nome do Usuário/Cliente: " style="font-weight: bold;"/>
+                    <p:inputText id="nomeUsuario" value="#{orcamentoBean.nomeUsuario}" required="true" />
+                </div>
+
+                <div class="field col-12 md:col-3" style="margin-bottom: 15px;">
+                    <p:outputLabel for="compParede" value="Comprimento da Parede (m): " style="font-weight: bold;"/>
+                    <p:inputNumber id="compParede" value="#{orcamentoBean.comprimentoParede}" required="true" decimalPlaces="2"/>
+                </div>
+
+                <div class="field col-12 md:col-3" style="margin-bottom: 15px;">
+                    <p:outputLabel for="altParede" value="Altura da Parede (m): " style="font-weight: bold;"/>
+                    <p:inputNumber id="altParede" value="#{orcamentoBean.alturaParede}" required="true" decimalPlaces="2"/>
+                </div>
+
+                <div class="field col-12 md:col-3" style="margin-bottom: 15px;">
+                    <p:outputLabel for="compTijolo" value="Comprimento do Tijolo (cm): " style="font-weight: bold;"/>
+                    <p:inputNumber id="compTijolo" value="#{orcamentoBean.comprimentoTijolo}" required="true" decimalPlaces="2"/>
+                </div>
+
+                <div class="field col-12 md:col-3" style="margin-bottom: 15px;">
+                    <p:outputLabel for="altTijolo" value="Altura do Tijolo (cm): " style="font-weight: bold;"/>
+                    <p:inputNumber id="altTijolo" value="#{orcamentoBean.alturaTijolo}" required="true" decimalPlaces="2"/>
+                </div>
+
+                <div class="field col-12" style="margin-top: 15px;">
+                    <p:commandButton value="Calcular Orçamento"
+                                     action="#{orcamentoBean.calcularOrcamento}"
+                                     update="formOrcamento"
+                                     icon="pi pi-calculator" />
+                </div>
+            </div>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

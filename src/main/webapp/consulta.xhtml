@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Consultar Orçamentos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .tabela { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .tabela th, .tabela td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        .tabela th { background-color: #f4f4f4; }
+        .btn { padding: 10px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        .input-text { padding: 8px; width: 300px; margin-right: 10px; }
+    </style>
+</h:head>
+<h:body>
+    <h2>Consulta de Orçamentos Salvos</h2>
+
+    <h:form>
+        <h:outputLabel value="Buscar por Nome do Cliente: " />
+        <h:inputText value="#{consultaBean.termoBusca}" styleClass="input-text" placeholder="Deixe em branco para ver todos" />
+        <h:commandButton value="Buscar" action="#{consultaBean.buscar}" styleClass="btn" />
+
+        <hr/>
+
+        <h:dataTable value="#{consultaBean.orcamentos}" var="orc" styleClass="tabela"
+                     rendered="#{not empty consultaBean.orcamentos}">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{orc.id}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Nome do Cliente</f:facet>
+                <h:outputText value="#{orc.nomeUsuario}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Quantidade de Tijolos</f:facet>
+                <h:outputText value="#{orc.quantidadeTijolos} unidades" />
+            </h:column>
+
+        </h:dataTable>
+
+        <h:outputText value="Nenhum orçamento encontrado."
+                      rendered="#{empty consultaBean.orcamentos and consultaBean.termoBusca != null}" />
+    </h:form>
+</h:body>
+</html>
