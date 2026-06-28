@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/materiais")
 
-// Essa classe é responsável por gerenciar a interface de acesso aos métodos para calculo de volume de concreto e tijolos
+
 public class MaterialController {
 
     private final MaterialService materialService;

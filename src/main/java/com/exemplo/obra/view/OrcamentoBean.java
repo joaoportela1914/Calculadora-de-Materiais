@@ -72,7 +72,7 @@ public class OrcamentoBean implements Serializable {
                         .retrieve()
                         .toBodilessEntity();
             } catch (Exception apiEx) {
-                // Silencia erros da API externa para garantir que o fluxo principal continue funcionando
+
             }
 
             Orcamento orcamento = new Orcamento();
